@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="tax_withholding_list_action">
+            <field name="name">Retencion de impuestos</field>
+            <field name="res_model">tax.withholding_voucher</field>
+            <field name="view_mode">tree,form,pivot</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Crear nueva retencion de impuesto
+                </p>
+            </field>
+        </record>
+        
+        <menuitem name="Retencion de impuestos" id="tax_withholding_menu" sequence="1" />
+        <menuitem id="tax_withholding_menu_sub" name="Retencion de impuestos" parent="tax_withholding_menu" sequence="2" />
+        <menuitem id="tax_withholding_menu_customer" name="Clientes" parent="tax_withholding_menu_sub" sequence="3" action="tax_withholding_list_action" />
+        <menuitem id="tax_withholding_menu_vendors" name="Proveedores" parent="tax_withholding_menu_sub" sequence="4" action="tax_withholding_list_action" />
+    </data>
+</odoo>
