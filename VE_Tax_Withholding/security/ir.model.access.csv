@@ -1,0 +1,3 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+tax_withholding_admin,Tax Withholding Admin,model_tax_withholding_voucher,group_tax_withholding_admin,1,1,1,1
+tax_withholding_read_all,Tax Withholding Read all,model_tax_withholding_voucher,,1,0,0,0

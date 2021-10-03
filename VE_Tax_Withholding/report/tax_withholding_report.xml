@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <report 
+        id="action_report_tax_withholding"
+        model="tax.withholding_voucher"
+        string="Comprobante de Retencion"
+        report_type="qweb-pdf"
+        name="VE_Tax_Withholding.report_withholding_document"
+        file="VE_Tax_Withholding.report_withholding"
+    />
+
+    <template id="report_withholding_document">
+        <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="web.external_layout">
+
+                <!-- SEPARACION DE CONTENIDO TITULO-->
+                <div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+                    <h4 class="nt16"> COMPROBANTE DE RETENCIÓN DEL IMPUESTO SOBRE LA RENTA I.S.L.R. </h4>
+                    <div class="row nt32 nb32" id="withholding_info">
+                        <div class="col-auto mw-100 mb-2" style="font-size:12px;">
+                            <p>
+                                <strong>REGLAMENTO PARCIAL DE LA LEY DE IMPUESTO SOBRE LA RENTA EN MATERIA DE RETENCIONES Decreto N° 1.808 23 de abril de 1997</strong>
+                            </p>
+                            <p style="margin-top: -15px;">
+                              Artículo 24: Los agentes de retención están obligados a entregar a los contribuyentes, 
+                              un comprobante por cada retención de impuesto que les practiquen en el cual se indique,
+                              entre otra información, el monto de lo pagado o abonado en cuenta y la cantidad retenida.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+​
+                <!-- SEPARACION DE CONTENIDO INFORMACION DEL CLIENTE -->
+                <div >
+                    <div style="width: 60%; float:left;">
+                        <t t-set="address" />
+                        <span style=" font-size: 20px !important; font-weight:bold !important;"> Informacion del Cliente</span>
+                        <address t-field="doc.related_invoice.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
+                        <div t-if="doc.related_invoice.partner_id.vat" class="mt16">
+                            <t t-if="doc.related_invoice.company_id.country_id.vat_label" t-esc="doc.related_invoice.company_id.country_id.vat_label" id="inv_tax_id_label"/>
+                            <t t-else="">Rif:</t>
+                            <span t-field="doc.related_invoice.partner_id.vat"/>
+                        </div>
+                        <div t-if="doc.related_invoice.partner_id.phone != '/'">
+                            <p>Telefono: <span t-field="doc.related_invoice.partner_id.phone"/>
+                            </p>
+                        </div>
+                    </div>
+                    <div style="width: 40%; min-height: 50px; float:left;">
+                        <h4>COMPROBANTE #: <span  t-field="doc.code"/></h4>
+                        <p>Fecha de Emisión: <span  t-field="doc.create_date"/></p>
+                        <p style="margin-top: -15px;">Periodo Fiscal: Octubre 2021</p>
+                    </div>
+                </div>
+​
+                <div style="clear:both;"></div>
+​
+​
+                <!-- INFORMACION PREVIA A LA TABLA-->
+                <div>
+                    <div style="width: 50%; float:left; text-align: justify; margin-bottom: 20px; padding:10px;">
+                        <p>Concepto: <span  t-field="doc.subject"/> </p>
+                    </div>
+                </div>
+​
+​
+                <div class="page" style="margin-bottom:20px;">
+                    <div class="row">
+                        <table class="table table-sm o_main_table">
+                            <thead>
+                                <tr>
+                                    <th name="th_invoice">No Factura</th>
+                                    <th name="th_date">Fecha</th>
+                                    <th name="th_type">No Control</th>
+                                    <th name="th_invoice_ammount">Importe de Factura</th>
+                                    <th name="th_taxable_income">Base Imponible</th>
+                                    <th name="th_tax_rate">% Ret</th>
+                                    <th name="th_temp">Menos Sustraendo</th>
+                                    <th name="th_tax_withheld">Impuesto Retenido</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td name="th_invoice">
+                                        <t t-if="doc.related_invoice.name">
+                                            <span t-field="doc.related_invoice.name"/>
+                                        </t>
+                                    </td>
+                                    <td name="th_date">
+                                        <t t-if="doc.related_invoice.invoice_date">
+                                            <span t-field="doc.related_invoice.invoice_date"/>
+                                        </t>
+                                    </td>
+                                    <td name="th_control_number">
+                                        <t t-if="doc.related_invoice.control_number">
+                                            <span t-field="doc.related_invoice.control_number"/>
+                                        </t>
+                                    </td>
+                                    <td name="th_invoice_ammount">
+                                        <t t-if="doc.total_amount">
+                                            <span t-field="doc.total_amount"/>
+                                        </t>
+                                    </td>
+                                    <td name="th_taxable_income">
+                                        <t t-if="doc.untaxed_amount">
+                                            <span t-field="doc.untaxed_amount"/>
+                                        </t>
+                                    </td>
+                                    <td name="th_tax_rate">
+                                        <t t-if="doc.tax_amount">
+                                            <span t-field="doc.tax_amount"/>
+                                        </t>
+                                    </td>
+                                    <td name="th_tax_withheld">
+                                        <p> - </p>
+                                    </td>
+                                    <td name="th_tax_withheld">
+                                        <t t-if="doc.taxed_amount_held">
+                                            <span t-field="doc.taxed_amount_held"/>
+                                        </t>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="width:30%; min-height: 20px; border-top: 4px solid black; float: right;">
+                        <p>Importe Neto:  <span t-field="doc.total_amount"/> Bs.</p>
+                    </div>
+                </div>
+                <!-- SECTION PARA COLOCAR SELLOS Y FIRMAS -->
+                <br></br>
+                <div style="margin-top: 20px;">
+                    <div style="width:40%; height: 100px; border: 1px solid black; float: left; padding: 10px; font-size: 12px;">
+                        <p> AGENTE DE RETENCION (SELLO,FECHA Y FIRMA) </p>
+                    </div>
+​
+                    <div style="width:20%; border: 1px solid transparent; float: left;"></div>
+                    <div style="width:40%; height: 100px; border: 1px solid black; float: left; padding: 10px; font-size: 12px;">
+                        <p> BENEFICIARIO</p>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </t>
+    </template>
+
+</odoo>
