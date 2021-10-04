@@ -10,11 +10,11 @@
                 <xpath expr="//field[@name='payment_reference']" position="after">
                     <field name="control_number" />
                 </xpath>
-                
+
                 <field name="control_number" position="after">
                     <field name="related_vendor" />
                 </field>
-                
+
             </field>
         </record>
     </data>

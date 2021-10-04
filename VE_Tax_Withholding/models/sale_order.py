@@ -2,11 +2,8 @@
 
 from odoo import models, fields, api
 
-class AccountMove( models.Model):
-    _inherit = 'account.move'
-
-
-    control_number = fields.Char(string='Numero de control', required=True, default='0000')
+class SaleOrder( models.Model):
+    _inherit = 'sale.order'
     
     related_vendor = fields.Selection(string='Vendedor',
                              selection=[('Karen Ramirez', 'Karen Ramirez'),

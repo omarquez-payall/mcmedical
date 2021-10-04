@@ -31,7 +31,6 @@
                         </div>
                     </div>
                 </div>
-​
                 <!-- SEPARACION DE CONTENIDO INFORMACION DEL CLIENTE -->
                 <div >
                     <div style="width: 60%; float:left;">
@@ -51,21 +50,16 @@
                     <div style="width: 40%; min-height: 50px; float:left;">
                         <h4>COMPROBANTE #: <span  t-field="doc.code"/></h4>
                         <p>Fecha de Emisión: <span  t-field="doc.create_date"/></p>
-                        <p style="margin-top: -15px;">Periodo Fiscal: Octubre 2021</p>
+                        <p style="margin-top: -15px;">Periodo Fiscal: <span  t-field="doc.period"/></p>
                     </div>
                 </div>
-​
                 <div style="clear:both;"></div>
-​
-​
                 <!-- INFORMACION PREVIA A LA TABLA-->
                 <div>
                     <div style="width: 50%; float:left; text-align: justify; margin-bottom: 20px; padding:10px;">
                         <p>Concepto: <span  t-field="doc.subject"/> </p>
                     </div>
                 </div>
-​
-​
                 <div class="page" style="margin-bottom:20px;">
                     <div class="row">
                         <table class="table table-sm o_main_table">
@@ -135,7 +129,6 @@
                     <div style="width:40%; height: 100px; border: 1px solid black; float: left; padding: 10px; font-size: 12px;">
                         <p> AGENTE DE RETENCION (SELLO,FECHA Y FIRMA) </p>
                     </div>
-​
                     <div style="width:20%; border: 1px solid transparent; float: left;"></div>
                     <div style="width:40%; height: 100px; border: 1px solid black; float: left; padding: 10px; font-size: 12px;">
                         <p> BENEFICIARIO</p>
