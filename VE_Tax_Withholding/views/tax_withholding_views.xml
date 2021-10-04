@@ -15,6 +15,17 @@
                                 <field name="subject"/>
                             </group>
                             <group> 
+                                <field name="creation_date" position="after">
+                                    <field name="period_date" />
+                                </field>
+                                
+                                <field name="period_date" position="after">
+                                    <field name="period"  />
+                                </field>
+                                
+                                <field name="period" position="after">
+                                    <field name="tax_amount" attrs="{'invisible':[('related_invoice','=', False)]}" />
+                                </field>
                                 <field name="tax_amount" position="after">
                                     <field name="taxed_amount_held" attrs="{'invisible':[('related_invoice','=', False)]}" />
                                 </field>
