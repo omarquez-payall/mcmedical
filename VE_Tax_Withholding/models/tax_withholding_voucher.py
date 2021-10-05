@@ -71,6 +71,6 @@ class TaxWithholdingVoucher( models.Model):
                 
                 self.total_net_amount = self.total_amount - self.taxed_amount_held
                 
-                self.tax_amount = record.amount_by_group[1][1]*(-100/record.amount_by_group[1][2])
+                self.tax_amount = round(record.amount_by_group[1][1]*(-100/record.amount_by_group[1][2]))
             else:
                 self.tax_amount = 0.00
