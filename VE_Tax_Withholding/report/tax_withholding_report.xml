@@ -120,7 +120,7 @@
                         </table>
                     </div>
                     <div style="width:30%; min-height: 20px; border-top: 4px solid black; float: right;">
-                        <p>Importe Neto:  <span t-field="doc.total_amount"/> Bs.</p>
+                        <p>Importe Neto:  <span t-field="doc.related_invoice.amount_total"/> Bs.</p>
                     </div>
                 </div>
                 <!-- SECTION PARA COLOCAR SELLOS Y FIRMAS -->
