@@ -35,7 +35,7 @@
                 <div >
                     <div style="width: 60%; float:left;">
                         <t t-set="address" />
-                        <span style=" font-size: 20px !important; font-weight:bold !important;"> Informacion del Cliente</span>
+                        <span style=" font-size: 20px !important; font-weight:bold !important;"> Informacion del Sujeto Retenido</span>
                         <address t-field="doc.related_invoice.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
                         <div t-if="doc.related_invoice.partner_id.vat" class="mt16">
                             <t t-if="doc.related_invoice.company_id.country_id.vat_label" t-esc="doc.related_invoice.company_id.country_id.vat_label" id="inv_tax_id_label"/>
@@ -50,7 +50,7 @@
                     <div style="width: 40%; min-height: 50px; float:left;">
                         <h4>COMPROBANTE #: <span  t-field="doc.code"/></h4>
                         <p>Fecha de Emisión: <span  t-field="doc.create_date"/></p>
-                        <p style="margin-top: -15px;">Periodo Fiscal: <span  t-field="doc.period"/></p>
+                        <p style="margin-top: -15px;">Periodo Fiscal: Octubre 2021</p>
                     </div>
                 </div>
                 <div style="clear:both;"></div>
