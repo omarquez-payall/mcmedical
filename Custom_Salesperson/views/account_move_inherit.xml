@@ -12,5 +12,29 @@
                 </xpath>
             </field>
         </record>
+        
+         <record model="ir.ui.view" id="invoice_view_list_inherit_custom_salesperson">
+            <field name="name">account.move.invoice.list.inherit.custom_salesperson</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_out_invoice_tree" />
+            <field name="arch" type="xml">
+
+                <xpath expr="//tree" position="inside">
+                    <field name="salesperson_id" />
+                </xpath>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="bill_view_list_inherit_custom_salesperson">
+            <field name="name">account.move.bill.list.inherit.custom_salesperson</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_in_invoice_tree" />
+            <field name="arch" type="xml">
+
+                <xpath expr="//tree" position="inside">
+                    <field name="salesperson_id" />
+                </xpath>
+            </field>
+        </record>
     </data>
 </odoo>
