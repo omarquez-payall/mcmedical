@@ -51,7 +51,7 @@
                         <h4>COMPROBANTE #: <span  t-field="doc.code"/></h4>
                         <p>Fecha de Emisión: <span  t-field="doc.creation_date"/></p>
 
-                        <p style="margin-top: -15px;">Periodo Fiscal: Octubre 2021</p>
+                        <p style="margin-top: -15px;">Periodo Fiscal: <span  t-field="doc.period"/> </p>
                     </div>
                 </div>
                 <div style="clear:both;"></div>
