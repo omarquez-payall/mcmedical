@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data> 
+        <record model="ir.ui.view" id="tax_withholding_subject_form">
+            <field name="name">tax.withholding.subject.form</field>
+            <field name="model">tax.withholding_subject</field>
+            <field name="arch" type="xml">
+                <form string="Formulario del Concepto de Retencion">
+                    <sheet>
+                        <h1><field name="code"/></h1>
+                        <group>
+                            <group> 
+                                <field name="active"/>
+                               
+                            </group>
+                            <group> 
+                                <field name="name"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Internal Notes">
+                                <field name="notes"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="tax_withholding_subject_list">
+            <field name="name">tax.withholding.subject.list</field>
+            <field name="model">tax.withholding_subject</field>
+            <field name="arch" type="xml">
+                <tree string="Tax Withholding Voucher List">
+                   <field name="code"/>
+                   <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="tax_withholding_subject_search">
+            <field name="name">tax.withholding.subject.search</field>
+            <field name="model">tax.withholding_subject</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="code"/>
+                    <field name="name"/>
+                </search>
+            </field>
+        
+        </record> 
+    </data>
+</odoo>

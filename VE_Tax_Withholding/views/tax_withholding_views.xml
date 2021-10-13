@@ -22,7 +22,6 @@
                                 <field name="period_date" position="after">
                                     <field name="period"  />
                                 </field>
-                                
                                 <field name="period" position="after">
                                     <field name="tax_amount" attrs="{'invisible':[('related_invoice','=', False)]}" />
                                 </field>

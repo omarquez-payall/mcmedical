@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record model="custom_salesperson.salesperson" id="Karen_Ramirez">
+            <field name="name">Karen Ramirez</field>
+            <field name="description">Karen Ramirez</field>
+        </record>
+
+        <record model="custom_salesperson.salesperson" id="Miguel_Duran">
+            <field name="name">Miguel Duran</field>
+            <field name="description">Miguel Duran</field>
+        </record>
+
+        <record model="custom_salesperson.salesperson" id="Dainet_Chauran">
+            <field name="name">Dainet Chauran</field>
+            <field name="description">Dainet Chauran</field>
+        </record>
+        
+        <record model="custom_salesperson.salesperson" id="Mercado_Libre">
+            <field name="name">Mercado Libre</field>
+            <field name="description">Mercado Libre</field>
+        </record>
+        
+        <record model="custom_salesperson.salesperson" id="Instagram">
+            <field name="name">Instagram</field>
+            <field name="description">Instagram</field>
+        </record>
+    </data>
+</odoo>

@@ -8,13 +8,15 @@ class TaxWithholdingVoucher( models.Model):
     _description = 'Tax Withholding Voucher Info'
 
 
-    code = fields.Char( string = 'Identifier Code', required = True)
+    code = fields.Char( string = 'Codigo de la Retencion', required = True)
 
-    subject = fields.Char( string = 'Concepto', required = True)
+    subject = fields.Many2one( string = 'Concepto de la Retencion',
+                                        comodel_name = 'tax.withholding_subject',
+                                        required = True)
 
     notes = fields.Text( string = 'Internal Notes about Voucher')
 
-    active = fields.Boolean( string = 'Active', default = True)
+    active = fields.Boolean( string = 'Activo', default = True)
 
     related_invoice = fields.Many2one( string = 'Referencia de la Factura',
                                         comodel_name = 'account.move',
@@ -36,10 +38,6 @@ class TaxWithholdingVoucher( models.Model):
 
     period_date = fields.Date(string='Fecha de período', default=fields.Date.today, store=True)
     
-    period_year = fields.Integer(string='año', store=True)
-    
-    period_month = fields.Char(string='mes', store=True)
-    
     period = fields.Text(string='Periodo', store=True)
 
     creation_date = fields.Date(string='Fecha de creacion', default=fields.Date.today)
@@ -49,11 +47,9 @@ class TaxWithholdingVoucher( models.Model):
     @api.onchange('period_date')
     def _compute_period(self):
         for record in self:
-            self.period_year = record.period_date.year
+            months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
             
-            self.period_month = record.period_date.strftime("%B")
-            
-            self.period = self.period_month + ' ' + str(self.period_year)
+            self.period = months[record.period_date.month-1] + ' ' + str(record.period_date.year)
 
 
     @api.onchange('related_invoice')
@@ -72,5 +68,7 @@ class TaxWithholdingVoucher( models.Model):
                 self.total_net_amount = self.total_amount - self.taxed_amount_held
                 
                 self.tax_amount = round(record.amount_by_group[1][1]*(-100/record.amount_by_group[1][2]))
+
+                self.code = 'RET:' + self.related_invoice.name
             else:
                 self.tax_amount = 0.00

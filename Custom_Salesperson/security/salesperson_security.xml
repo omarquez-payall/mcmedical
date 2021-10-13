@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_custom_salesperson_admin" model="res.groups">
+        <field name="name">Custom Salesperson / Admin</field>
+    </record>
+</odoo>

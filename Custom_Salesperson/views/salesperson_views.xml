@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="salesperson_view_form">
+            <field name="name">custom_salesperson.salesperson.form</field>
+            <field name="model">custom_salesperson.salesperson</field>
+            <field name="arch" type="xml">
+                <form string="Salesperson Form">
+                    <sheet>
+                        <h1><field name="name"/></h1>
+                        <group>
+                            <group>
+                                <field name="active"/>
+                                <field name="description"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="salesperson_view_list">
+            <field name="name">custom_salesperson.salesperson.list</field>
+            <field name="model">custom_salesperson.salesperson</field>
+            <field name="arch" type="xml">
+                <tree string="Salesperson List">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="salesperson_view_search">
+            <field name="name">custom_salesperson.salesperson.search</field>
+            <field name="model">custom_salesperson.salesperson</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="description"/>
+                </search>
+            </field>
+        </record>
+        
+    </data>
+</odoo>
