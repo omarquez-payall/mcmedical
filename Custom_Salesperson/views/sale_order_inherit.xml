@@ -10,7 +10,22 @@
                 <xpath expr="//field[@name='payment_term_id']" position="after">
                     <field name="salesperson_id" />
                 </xpath>
+                
             </field>
         </record>
+        
+        <record model="ir.ui.view" id="view_order_list_inherit_custom_salesperson">
+            <field name="name">sale.order.list.inherit.custom_salesperson</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding" />
+            <field name="arch" type="xml">
+                
+                <xpath expr="//tree" position="inside">
+                    <field name="salesperson_id" />
+                </xpath>
+                
+            </field>
+        </record>
+        
     </data>
 </odoo>
