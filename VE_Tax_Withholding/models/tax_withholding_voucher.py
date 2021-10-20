@@ -8,7 +8,7 @@ class TaxWithholdingVoucher( models.Model):
     _description = 'Tax Withholding Voucher Info'
 
     code = fields.Char( string = 'Codigo de la Retencion', required = True,
-                   index=True, default=lambda self: self.env['ir.sequence'].next_by_code('ret_number') or _('new'))
+                   index=True, default=lambda self: self._get_next_sequence_number())
 
     subject = fields.Many2one( string = 'Concepto de la Retencion',
                                         comodel_name = 'tax.withholding_subject',
@@ -40,6 +40,23 @@ class TaxWithholdingVoucher( models.Model):
     
     period = fields.Text(string='Periodo', store=True)
     creation_date = fields.Date(string='Fecha de creacion', default=fields.Date.today)
+    
+    
+    @api.model
+    def _get_next_sequence_number(self):
+        sequence = self.env['ir.sequence'].search([('code','=','ret_number')])
+        next= sequence.get_next_char(sequence.number_next_actual)
+        return next
+    
+    
+
+    @api.model
+    def create(self, vals):
+        vals['code'] = self.env['ir.sequence'].next_by_code('ret_number')
+        result = super(TaxWithholdingVoucher, self).create(vals)
+        return result 
+    
+    
     
     @api.onchange('period_date')
     def _compute_period(self):
