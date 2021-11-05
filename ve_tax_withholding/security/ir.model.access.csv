@@ -1,0 +1,9 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+tax_withholding_admin,Tax Withholding Vendor Admin,model_tax_withholding_voucher_vendor,group_tax_withholding_admin,1,1,1,1
+tax_withholding_read_all,Tax Withholding Read all,model_tax_withholding_voucher_vendor,,1,0,0,0
+tax_withholding_subject_admin, Tax Withholding Subject Access,model_tax_withholding_subject,group_tax_withholding_admin,1,1,1,1
+tax_withholding_subject_all, Tax Withholding Subject All Access,model_tax_withholding_subject,,1,0,0,0
+tax_purchases_book_admin, Tax Purchases Book Admin,model_tax_purchases_book_wizard,group_tax_withholding_admin,1,1,1,1
+tax_purchases_book_all, Tax Purchases Book Read,model_tax_purchases_book_wizard,,1,0,0,0
+tax_purchases_book__lines_admin, Tax Purchases Book lines Admin,model_tax_purchases_book_lines_wizard,group_tax_withholding_admin,1,1,1,1
+tax_withholding_admin_customer,Tax Withholding Customer Admin,model_tax_withholding_voucher_customer,group_tax_withholding_admin,1,1,1,1

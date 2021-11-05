@@ -1,2 +1,3 @@
 id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
 salesperson_admin, salesperson admin,model_custom_salesperson_salesperson,group_custom_salesperson_admin,1,1,1,1
+salesperson_read, salesperson read,model_custom_salesperson_salesperson,,1,0,0,0

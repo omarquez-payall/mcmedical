@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="tax_withholding_voucher_customer_list_action">
+            <field name="name">Retencion de impuestos para Clientes</field>
+            <field name="res_model">tax.withholding_voucher_customer</field>
+            <field name="view_mode">tree,form,pivot</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Crear nueva retencion de impuesto para Clientes
+                </p>
+            </field>
+        </record>
+        
+    
+        <menuitem id="tax_withholding_voucher_customer_menu_sub" name="Comprobante de Retención para Clientes" parent="account.menu_finance_entries_accounting_miscellaneous" sequence="29" action="tax_withholding_voucher_customer_list_action"/> 
+
+    
+    </data>
+</odoo>

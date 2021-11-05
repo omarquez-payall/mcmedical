@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data> 
+        <record model="ir.ui.view" id="tax_withholding_form">
+            <field name="name">tax.withholding.form</field>
+            <field name="model">tax.withholding_voucher_vendor</field>
+            <field name="arch" type="xml">
+                <form string="Tax Withholding Voucher Form">
+                    <sheet>
+                        <h1> <field name="code"/></h1>
+                        <group>
+                            <group> 
+                                <field name="active"/>
+                                <field name="related_invoice"/>
+                                <field name="subject"/>
+                            </group>
+                            <group> 
+                                <field name="creation_date" position="after">
+                                    <field name="period_date" />
+                                </field>
+                                
+                                <field name="period_date" position="after">
+                                    <field name="period"  />
+                                </field>
+                                <field name="period" position="after">
+                                    <field name="tax_amount" attrs="{'invisible':[('related_invoice','=', False)]}" />
+                                </field>
+                                <field name="tax_amount" position="after">
+                                    <field name="taxed_amount_held" attrs="{'invisible':[('related_invoice','=', False)]}" />
+                                </field>
+
+                                <field name="taxed_amount_held" position="after">
+                                    <field name="untaxed_amount" attrs="{'invisible':[('related_invoice','=', False)]}" />
+                                </field>
+
+                                <field name="untaxed_amount" position="after">
+                                    <field name="total_amount" attrs="{'invisible':[('related_invoice','=', False)]}" />
+                                </field>
+
+                                <field name="total_amount" position="after">
+                                    <field name="total_net_amount" attrs="{'invisible':[('related_invoice','=', False)]}" />
+                                </field>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Internal Notes">
+                                <field name="notes"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="tax_withholding_list">
+            <field name="name">tax.withholding.list</field>
+            <field name="model">tax.withholding_voucher_vendor</field>
+            <field name="arch" type="xml">
+                <tree string="Tax Withholding Voucher List">
+                   <field name="code"/>
+                   <field name="related_invoice"/>
+                   <field name="tax_amount"/>
+                   <field name="create_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="tax_withholding_search">
+            <field name="name">tax.withholding.search</field>
+            <field name="model">tax.withholding_voucher_vendor</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="code"/>
+                    <field name="related_invoice"/>
+                    <field name="tax_amount"/>
+                </search>
+            </field>
+        
+        </record> 
+
+        <record id="seq_tax_witholding_voucher" model="ir.sequence">
+            <field name="name">Comprobante de retención N°</field>
+            <field name="code">ret_number</field>
+            <field name="prefix">RET-PROV</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>
