@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data> 
+        
+        <record model="ir.ui.view" id="purchases_book_form">
+            <field name="name">tax.purchases_book.form</field>
+            <field name="model">tax.purchases_book_wizard</field>
+            <field name="arch" type="xml">
+                <form string="Libro de Compras">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="description"/>
+                            </group>
+                            <group>
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Facturas">
+                                <field name="related_invoices" readonly='1'>
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="control_number"/>
+                                        <field name="total_amount_with_taxes"/>
+                                        <field name="period"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                        <footer> 
+                            <button string="Imprimir" class="btn-primary" name ="action_print_report" type="object" />
+                            <button string="Generate Excel" name="action_generate_xlsx_report" type="object" class="btn-primary"/>
+                            <button string="Cancel" class="btn-secondary" special="cancel" />
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>        
+ 
+        <record model="ir.actions.act_window" id="purchases_book_list_action">
+            <field name="name">Libro de Compras</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tax.purchases_book_wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref='purchases_book_form'/>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

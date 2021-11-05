@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <report
+            id="action_report_excel_book"
+            model="tax.purchases_book_wizard"
+            string="Libro de Compras Reporte"
+            report_type="xlsx"
+            name="ve_tax_withholding.report_book_excel"
+            file="report_book_excel"
+            attachment_use="False"
+    />
+
+</odoo>

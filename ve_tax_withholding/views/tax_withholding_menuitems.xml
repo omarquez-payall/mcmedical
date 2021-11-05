@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="tax_withholding_voucher_vendor_list_action">
+            <field name="name">Retencion de impuestos para Proveedores</field>
+            <field name="res_model">tax.withholding_voucher_vendor</field>
+            <field name="view_mode">tree,form,pivot</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Crear nueva retencion de impuesto para Proveedores
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="tax_withholding_subject_vendor_list_action">
+            <field name="name">Concepto de Retencion</field>
+            <field name="res_model">tax.withholding_subject</field>
+            <field name="view_mode">tree,form,pivot</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Crear nuevo concepto de retencion
+                </p>
+            </field>
+        </record>
+        
+    
+        <menuitem id="tax_withholding_menu_sub" name="Comprobante de Retención para Proveedores" parent="account.menu_finance_entries_accounting_miscellaneous" sequence="30" action="tax_withholding_voucher_vendor_list_action"/> 
+        <menuitem id="tax_withholding_subject_menu" name="Comprobante de Retención" parent="account.account_account_menu" sequence="3" action="tax_withholding_subject_vendor_list_action"/>
+        <menuitem id="tax_withholding_menu_subjects_conceptos" name="Conceptos de Retencion" parent="tax_withholding_subject_menu" sequence="3" action="tax_withholding_subject_vendor_list_action"/> 
+    
+    </data>
+</odoo>

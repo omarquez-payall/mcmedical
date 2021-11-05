@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <report 
+        id="action_report_tax_book_report"
+        model="tax.purchases_book_wizard"
+        string="Libro Contable"
+        report_type="qweb-pdf"
+        name="ve_tax_withholding.report_book_document"
+        file="ve_tax_withholding.report_book"
+    />
+
+    <template id="report_book_document">
+        <t t-call="web.html_container">
+
+        <t t-call="web.external_layout">
+
+            <!-- SEPARACION DE CONTENIDO TITULO-->
+            <div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+                <h4 class="nt16"> LIBRO DE COMPRA </h4>
+                <div class="row nt32 nb32" id="withholding_info">
+                    <div class="col-auto mw-100 mb-2" style="font-size:12px;">
+                        <p>
+                            <strong>PRUEBA</strong>
+                        </p>
+                        <p style="margin-top: -15px;">
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- SEPARACION DE CONTENIDO INFORMACION DEL CLIENTE -->
+            
+                <div style="width: 60%; float:left; font-size: 14px;">
+
+                    <!-- <t t-set="address" />
+                        <span style=" font-size: 20px !important; font-weight:bold !important;"> Informacion del Sujeto Retenido</span>
+                        <address t-field="doc.related_invoice.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
+                        <div t-if="doc.related_invoice.partner_id.vat" class="mt16">
+                            <t t-if="doc.related_invoice.company_id.country_id.vat_label" t-esc="doc.related_invoice.company_id.country_id.vat_label" id="inv_tax_id_label"/>
+                            <t t-else="">Rif:</t>
+                            <span t-field="doc.related_invoice.partner_id.vat"/>
+                        </div> -->
+
+                    <!-- <p>INFORMACION DE LA EMPRESA / ENCABEZADO</p> -->
+
+                    <p>Registro de Informacion Fiscal del Contribuyente</p>
+                    <p style="margin-top: -15px;">J-50053531-7</p>
+                    <p style="margin-top: -15px;">Contribuyente Ordinario</p>
+
+                </div>
+                <div style="width: 40%; min-height: 50px; float:left; font-size: 14px;">
+                    <p>
+                        <strong>Periodo Fiscal</strong>
+                    </p>    
+                    <p style="margin-top: -15px;">
+                        <strong>Año:</strong> 2021 <strong>Mes:</strong> Octubre
+                    </p>
+                </div>
+                <div style="clear:both;"></div>
+                
+                <div class="page" style="margin-bottom:20px; font-size: 10px; padding: 0px; margin: 0px;">
+                    <div class="row">
+                        <table class="table table-sm o_main_table">
+                            <thead>
+                                <tr>
+                                    <th name="th_invoice">No Factura</th>
+                                    <th name="th_date">Fecha</th>
+                                    <th name="th_type">Rif</th>
+                                    <th name="th_invoice_ammount">Nombre o Razon Social</th>
+                                    <th name="th_taxable_income">Tipo Prof</th>
+                                    <th name="th_tax_rate">N° Comp</th>
+                                    <th name="th_temp">Fecha Aplic. Ret</th>
+                                    <th name="th_tax_withheld">Nro Planilla Import C-80</th>
+                                    <th name="th_tax_withheld">Nro Factura</th>
+                                    <th name="th_tax_withheld">Nro Control</th>
+                                    <th name="th_tax_withheld">Nro Nota de Credito</th>
+                                    <th name="th_tax_withheld">Nro Nota de debito</th>
+                                    <th name="th_tax_withheld">Tipo de Transaccion</th>
+                                    <th name="th_tax_withheld">N° de Factura Afectada</th>
+                                    <th name="th_tax_withheld">Total Import. Con IVA</th>
+                                    <th name="th_tax_withheld">Total Import. Exe/Exo</th>
+                                    <th name="th_tax_withheld">Exe/Exo</th>
+                                    <th name="th_tax_withheld">Base Imponible</th>
+                                    <th name="th_tax_withheld">Impuesto IVA</th>
+                                    <th name="th_tax_withheld">Total Compras Internas con IVA</th>
+                                    <th name="th_tax_withheld">Compras Internas Exe/Exo</th>
+                                    <th name="th_tax_withheld">Base</th>
+                                    <th name="th_tax_withheld">Impuesto</th>
+                                    <th name="th_tax_withheld">Base</th>
+                                    <th name="th_tax_withheld">Impuesto</th>
+                                    <th name="th_tax_withheld">IVA Retenido al Vendedor</th>
+                                    <th name="th_tax_withheld">Anticipo de IVA Import.</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td name="th_invoice">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_date">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_control_number">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_invoice_ammount">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_taxable_income">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_tax_rate">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_tax_withheld">
+                                        <p> - </p>
+                                    </td>
+                                    <td name="th_tax_withheld">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_tax_withheld">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_tax_withheld">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_tax_withheld">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_tax_withheld">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_tax_withheld">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_tax_withheld">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_tax_withheld">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_tax_withheld">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_tax_withheld">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_tax_withheld">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_tax_withheld">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_tax_withheld">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_tax_withheld">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_tax_withheld">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_tax_withheld">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_tax_withheld">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_tax_withheld">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_tax_withheld">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_tax_withheld">
+                                        <p> TEST </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="width:30%; min-height: 20px; border-top: 4px solid black; float: right;">
+                        <p>Importe Neto:  6526 Bs.</p>
+                    </div>
+                </div>
+                <!-- SECTION PARA COLOCAR SELLOS Y FIRMAS -->
+                <br/>
+                <div style="width: 80%; margin-top: 20px; margin-left: 10%; margin-right: 10%;">
+                    <div style="width:50%; height: 100px; float: left; padding: 10px; font-size: 12px;">
+                        <p>
+                            <strong>RESUMEN DE LIBRO DE COMPRAS</strong>
+                        </p>
+                        <p style="margin-top: -10px;">Compras Internas No Gravadas</p>
+                        <p style="margin-top: -15px;">Compras de Importación</p>
+                        <p style="margin-top: -15px;">Compras gravadas Alicuota General</p>
+                        <p style="margin-top: -15px;">Compras gravadas Alicuota General + Adicional</p>
+                        <p style="margin-top: -15px;">Compras gravadas Alicuota Reducida</p>
+                        <p>IVA Retenido al Vendedor</p>
+                        <p style="margin-top: -15px;">Ajustes a los créditos fiscales de periodos anteriores</p>
+                        <p style="margin-top: -15px;">Cantidad total de Compras</p>
+                    </div>
+                    <div style="width:25%; float: left; padding: 10px; font-size: 12px;">
+                        <p>
+                            <strong>Base Imponible</strong>
+                        </p>
+                        <p style="margin-top: -10px;">4.70</p>
+                        <p style="margin-top: -15px;">0.00</p>
+                        <p style="margin-top: -15px;">43.70</p>
+                        <p style="margin-top: -15px;">43.70</p>
+                        <p style="margin-top: -15px;">0.00</p>
+                        <p></p>
+                        <p style="margin-top: -15px;"></p>
+                        <p style="margin-top: -15px;"></p>
+                    </div>    
+                    <div style="width:25%; float: left; padding: 10px; font-size: 12px;">
+                        <p>
+                            <strong>Crédito Fiscal</strong>
+                        </p>
+                        <p style="margin-top: -10px;"></p>
+                        <p style="margin-top: -15px;"></p>
+                        <p style="margin-top: -15px;">6.94</p>
+                        <p style="margin-top: -15px;">6.94</p>
+                        <p style="margin-top: -15px;">0.00</p>
+                        <p>0.00</p>
+                        <p style="margin-top: -15px;">0.00</p>
+                        <p style="margin-top: -15px;">10</p>
+                    </div>
+                </div>
+            </t>
+
+        </t>
+    </template>
+
+</odoo>
