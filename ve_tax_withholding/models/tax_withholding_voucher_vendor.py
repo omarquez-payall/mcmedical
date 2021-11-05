@@ -7,18 +7,8 @@ class TaxWithholdingVoucherVendor( models.Model):
     _name = 'tax.withholding_voucher_vendor'
     _description = 'Tax Withholding Voucher Info'
 
-<<<<<<< HEAD:VE_Tax_Withholding/models/tax_withholding_voucher.py
-    code = fields.Char( string = 'Codigo de la Retencion', required = True,
-                   index=True, default=lambda self: self._get_next_sequence_number())
-
-    subject = fields.Many2one( string = 'Concepto de la Retencion',
-                                        comodel_name = 'tax.withholding_subject',
-                                        required = True)
-
-=======
     code = fields.Char( string = 'Codigo de la Retencion', required = True, index=True, default=lambda self: self._get_next_sequence_number() )
     subject = fields.Many2one( string = 'Concepto de la Retencion', comodel_name = 'tax.withholding_subject', required = True)
->>>>>>> comprobante:ve_tax_withholding/models/tax_withholding_voucher_vendor.py
     notes = fields.Text( string = 'Internal Notes about Voucher')
     active = fields.Boolean( string = 'Activo', default = True)
     related_invoice = fields.Many2one( string = 'Referencia de la Factura', comodel_name = 'account.move', required = True)
@@ -32,16 +22,12 @@ class TaxWithholdingVoucherVendor( models.Model):
     period = fields.Text(string='Periodo', store=True)
     creation_date = fields.Date(string='Fecha de creacion', default=fields.Date.today)
     
-<<<<<<< HEAD:VE_Tax_Withholding/models/tax_withholding_voucher.py
-    
-=======
     @api.model
     def create(self, vals):
         vals['code'] = self.env['ir.sequence'].next_by_code('ret_number')
         result = super(TaxWithholdingVoucherVendor, self).create(vals)
         return result 
 
->>>>>>> comprobante:ve_tax_withholding/models/tax_withholding_voucher_vendor.py
     @api.model
     def _get_next_sequence_number(self):
         sequence = self.env['ir.sequence'].search([('code','=','ret_number')])
@@ -49,17 +35,6 @@ class TaxWithholdingVoucherVendor( models.Model):
         return next
     
     
-<<<<<<< HEAD:VE_Tax_Withholding/models/tax_withholding_voucher.py
-
-    @api.model
-    def create(self, vals):
-        vals['code'] = self.env['ir.sequence'].next_by_code('ret_number')
-        result = super(TaxWithholdingVoucher, self).create(vals)
-        return result 
-    
-    
-=======
->>>>>>> comprobante:ve_tax_withholding/models/tax_withholding_voucher_vendor.py
     
     @api.onchange('period_date')
     def _compute_period(self):
